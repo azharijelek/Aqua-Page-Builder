@@ -56,7 +56,7 @@ a:hover, a:active, a:focus { color: #d54e21; }
 	border-bottom: 1px solid #dfdfdf;
 }
 #aqpb-body {
-	background: #fff;
+	background: #fff url(../images/az_subtle.jpg) repeat;
 	border-bottom: 1px solid #dfdfdf;
 	border-top: 1px solid #fff;
 	padding: 0 10px;
@@ -187,7 +187,6 @@ a:hover, a:active, a:focus { color: #d54e21; }
 	position: relative;
 	margin: 13px 0 0 0;
 }
-#page-builder .block-handle,
 #blocks-archive .block-handle {
 	cursor: move;
 	white-space:nowrap;
@@ -212,6 +211,51 @@ a:hover, a:active, a:focus { color: #d54e21; }
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
 }
+#page-builder .block-handle {
+	cursor: move;
+	white-space:nowrap;
+	text-overflow: hidden;
+	background-color: #3bb3e0;
+	padding: 10px 10px 10px 29px;
+	position: relative;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+	color: #fff;
+	border: solid 1px #186f8f;
+	background-image: linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0, rgb(44,160,202)), color-stop(1, rgb(62,184,229)) );
+	-webkit-box-shadow: inset 0px 1px 0px #7fd2f1, 0px 1px 0px #fff;
+	-moz-box-shadow: inset 0px 1px 0px #7fd2f1, 0px 1px 0px #fff;
+	box-shadow: inset 0px 1px 0px #7fd2f1, 0px 1px 0px #fff;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+}
+.hidden{display:none}
+#page-builder .block-handle:hover:active, #page-builder .block-handle:hover:hover {
+	padding: 10px 10px 10px 29px;
+	background-image: linear-gradient(bottom, rgb(62,184,229) 0%, rgb(44,160,202) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(62,184,229) 0%, rgb(44,160,202) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(62,184,229) 0%, rgb(44,160,202) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(62,184,229) 0%, rgb(44,160,202) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(62,184,229) 0%, rgb(44,160,202) 100%);
+	background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0, rgb(62,184,229)),
+	color-stop(1, rgb(44,160,202))
+	);
+}
+#page-builder .block-handle .block-title{
+	text-shadow:0px 1px 3px #004F7C
+}
 	#page-builder .block-edit-active .block-handle {
 		-webkit-border-bottom-right-radius: 0;
 		-webkit-border-bottom-left-radius: 0;
@@ -227,33 +271,60 @@ a:hover, a:active, a:focus { color: #d54e21; }
 }
 	#page-builder .block-title {overflow: hidden;}
 	#blocks-archive .block-title {position: absolute;}
-	.in-block-title { color: #606060; }
+	.in-block-title { color: #FFEE6E; }
 #page-builder .block-controls { 
 	font-size: 12px;
 	position: absolute;
 	right: 20px;
 	top: -1px;
+	width:100%;
+	margin:0 auto;
+	left:0;
 }
 #page-builder .block-type {
 	color: #999; 
 	font-size: 12px;
 	padding-right: 10px;
 }
-#page-builder .block-edit { 
+#page-builder .block-delete { 
 	position: absolute;
-	right: -20px;
+	left: 0;
 	top: 0;
 	display: block;
 	width: 30px;
-	height: 36px;
+	height: 40px;
 	text-indent: -999em;
-	border-bottom: 1px solid;
+	border-bottom: none;
 	-webkit-border-bottom-left-radius: 3px;
 	border-bottom-left-radius: 3px;
-	background: transparent url(../images/arrows.png) no-repeat 8px 10px;
-	border-bottom-color: #eee;
+	background: transparent url(../images/trash.png) no-repeat center center;
+	-webkit-transition: all 500ms ease;
+	-moz-transition: all 500ms ease;
+	-ms-transition: all 500ms ease;
+	-o-transition: all 500ms ease;
+	transition: all 500ms ease;
 }
-	#page-builder .block-edit:hover{ background-image: url(../images/arrows-dark.png); }
+
+#page-builder .block-edit { 
+	position: absolute;
+	right: -0;
+	top: 0;
+	display: block;
+	width: 30px;
+	height: 40px;
+	text-indent: -999em;
+	border-bottom: none;
+	-webkit-border-bottom-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	background: transparent url(../images/setting.png) no-repeat center center;
+	-webkit-transition: all 500ms ease;
+	-moz-transition: all 500ms ease;
+	-ms-transition: all 500ms ease;
+	-o-transition: all 500ms ease;
+	transition: all 500ms ease;
+	outline:none!Important;
+}
+	#page-builder .block-edit:hover{ opacity:0.7 }
 #page-builder .block-settings {
 	display: none;
 	border: solid;
@@ -379,6 +450,7 @@ margin-left: 20px;
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
 	}
+
 #message.error ul {
 	margin-top: 0;
 }

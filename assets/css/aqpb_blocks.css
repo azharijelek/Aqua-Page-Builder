@@ -3,9 +3,26 @@ Blocks styling
 
 Styles for the individual blocks in the Aqua Page Builder
 
-DO NOT EDIT THIS
+DO NOT EDIT THIS // Sorry Syamil, I'd Like to edit this
 
 */
+/* NEW EDITING | EDITAN BARU */
+#page-builder .modal{
+	min-height:300px;
+}
+.modal div.description{
+	overflow-y: scroll;
+	max-height:300px;
+}
+#myModalLabel .in-block-title{
+	color:Black;
+}
+
+#blocks-archive p.empty-column, .block-settings-column > .modal-header{display:none;}
+
+#wpcontent #wpadminbar{
+	z-index:1000!important
+}
 
 /** BASIC FORM ELEMENTS **/
 .block-settings .description,
@@ -88,7 +105,7 @@ DO NOT EDIT THIS
 
 	.block-settings .textarea-full { width: 100%; }
 	.block-settings select { width: 100%; }
-	
+
 .block-settings .description-float { 
 	margin-right: 10px;
 	float: left;
@@ -97,10 +114,12 @@ DO NOT EDIT THIS
 /* Columns */
 #blocks-to-edit .block-aq_column_block {
 	padding: 4px;
-	background: #FCFCFC;
+	background: #f0f0f0;
+	background-size:auto auto;
 	margin: 8px -5px -5px 15px;
-	border: 1px dotted #E3E3E3;
+	border: 1px dashed #cdcdcd;
 	max-width: 734px;
+	position:relative;
 }
 #blocks-to-edit .block-aq_column_block ul.blocks { 
 	min-height: 50px;
@@ -185,3 +204,6 @@ DO NOT EDIT THIS
 /** Customs
 Insert your own custom CSS below this line **/
 #blocks-archive .block-featured_portfolio .block-title { font-size: 11px; }
+.ckeditor{width:100%!Important}
+.ckeditor{width:100%!Important;min-width:400px!Important}
+.mceLayout{width:100%!important}

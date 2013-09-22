@@ -132,17 +132,23 @@ if(!class_exists('AQ_Block')) {
 	 		$resizable = $resizable ? '' : 'not-resizable';
 	 		
 	 		echo '<li id="template-block-'.$number.'" class="block block-'.$id_base.' '. $size .' '.$resizable.'">',
-	 				'<dl class="block-bar">',
+	 				'<dl class="block-bar '.$resizable.'">',
 	 					'<dt class="block-handle">',
 	 						'<div class="block-title">',
 	 							$name , $title, 
 	 						'</div>',
 	 						'<span class="block-controls">',
-	 							'<a class="block-edit" id="edit-'.$number.'" title="Edit Block" href="#block-settings-'.$number.'">Edit Block</a>',
+	 							'<a class="block-delete delete" href="#" title="Delete this module">Delete</a>',
+	 							'<a class="block-edit" id="edit-'.$number.'" title="Edit Block" href="#block-settings-'.$number.'" data-toggle="modal">Edit Module</a>',
 	 						'</span>',
 	 					'</dt>',
+	 					
 	 				'</dl>',
-	 				'<div class="block-settings cf" id="block-settings-'.$number.'">';
+	 				
+			'<div class="block-settings cf modal hide fade" id="block-settings-'.$number.'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">',
+			'<div class="modal-header">
+			<button class="close" data-dismiss="modal" aria-hidden="true">x</button>
+			<h3 id="myModalLabel">'.$name , $title, '</h3></div>';
 	 	}
 	 	
 	 	//form footer
@@ -151,14 +157,22 @@ if(!class_exists('AQ_Block')) {
 	 		
 	 		$block_saving_id = 'aq_blocks[aq_block_'.$number.']';
 	 			
-	 			echo '<div class="block-control-actions cf"><a href="#" class="delete">Delete</a> | <a href="#" class="close">Close</a></div>';
+	 			echo '<div class="hidden block-control-actions cf"><a href="#" class="btn btn-danger delete" data-dismiss="modal" >Delete</a></div>';
 	 			echo '<input type="hidden" class="id_base" name="'.$this->get_field_name('id_base').'" value="'.$id_base.'" />';
 	 			echo '<input type="hidden" class="name" name="'.$this->get_field_name('name').'" value="'.$name.'" />';
 	 			echo '<input type="hidden" class="order" name="'.$this->get_field_name('order').'" value="'.$order.'" />';
 	 			echo '<input type="hidden" class="size" name="'.$this->get_field_name('size').'" value="'.$size.'" />';
 	 			echo '<input type="hidden" class="parent" name="'.$this->get_field_name('parent').'" value="'.$parent.'" />';
 	 			echo '<input type="hidden" class="number" name="'.$this->get_field_name('number').'" value="'.$number.'" />';
-	 		echo '</div>',
+			
+			
+	 		echo '';
+	 		echo '<div class="modal-footer">',
+					
+					'<button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Done</button>',
+				 ' </div>';
+	 		echo '</div>';
+	 	
 	 			'</li>';
 	 	}
 	 	
@@ -166,7 +180,7 @@ if(!class_exists('AQ_Block')) {
 	 	function before_block($instance) {
 	 		extract($instance);
 	 		$column_class = $first ? 'aq-first' : '';
-	 		
+	 		$sized = str_replace('span','-',$size);
 	 		echo '<div id="aq-block-'.$template_id.'-'.$number.'" class="aq-block aq-block-'.$id_base.' aq_'.$size.' '.$column_class.' cf">';
 	 	}
 	 	

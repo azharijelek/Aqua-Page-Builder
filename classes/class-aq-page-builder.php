@@ -70,6 +70,7 @@ if(!class_exists('AQ_Page_Builder')) {
 			
 		}
 		
+		
 		/**
 		 * Add shortcut to Admin Bar menu
 		 *
@@ -90,12 +91,13 @@ if(!class_exists('AQ_Page_Builder')) {
 		function admin_enqueue() {
 		
 			// Register 'em
-			wp_register_style( 'aqpb-css', $this->url.'assets/css/aqpb.css', array(), time(), 'all');
+			wp_register_style( 'aqpb-css', $this->url.'assets/css/aqpb.css', array(), time(), 'all');			
 			wp_register_style( 'aqpb-blocks-css', $this->url.'assets/css/aqpb_blocks.css', array(), time(), 'all');
 			wp_register_script('aqpb-js', $this->url . 'assets/js/aqpb.js', array('jquery'), time(), true);
 			wp_register_script('aqpb-fields-js', $this->url . 'assets/js/aqpb-fields.js', array('jquery'), time(), true);
 			
 			// Enqueue 'em
+			//ORIGINAL BY Syamil
 			wp_enqueue_style('aqpb-css');
 			wp_enqueue_style('aqpb-blocks-css');
 			wp_enqueue_style('wp-color-picker');
@@ -107,7 +109,23 @@ if(!class_exists('AQ_Page_Builder')) {
 			wp_enqueue_script('iris');
 			wp_enqueue_script('wp-color-picker');
 			wp_enqueue_script('aqpb-js');
-			wp_enqueue_script('aqpb-fields-js');
+			wp_enqueue_script('aqpb-fields-js');			
+			/*---------------------------*/
+			//Custom Modification scripts
+			/*---------------------------*/
+				// Register 'em
+				wp_register_script('bootstrap-js', $this->url . 'assets/js/bootstrap.js', array('jquery'), time(), true);
+				wp_register_script('tinymce', $this->url . 'assets/js/tinymce/tinymce.min.js', array('jquery'), time(), true);
+				wp_register_style( 'bootstrap-css', $this->url.'assets/css/bootstrap.css', array(), time(), 'all');
+				
+				// Enqueue 'em
+				wp_enqueue_script('bootstrap-js');
+				wp_enqueue_script('tinymce');
+				wp_enqueue_style('bootstrap-css');
+				
+			
+			/*---------------------------*/
+			//END
 			
 			// Media library uploader
 			wp_enqueue_script('thickbox');  

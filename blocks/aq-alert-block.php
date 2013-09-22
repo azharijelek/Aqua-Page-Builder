@@ -8,7 +8,7 @@ if(!class_exists('AQ_Alert_Block')) {
 		function __construct() {
 			$block_options = array(
 				'name' => 'Alerts',
-				'size' => 'span6',
+				'size' => 'span3',
 			);
 			
 			//create the block

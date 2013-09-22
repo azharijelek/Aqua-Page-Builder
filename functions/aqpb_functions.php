@@ -52,11 +52,30 @@ if(class_exists('AQ_Page_Builder')) {
 	
 	/* Textarea field */
 	function aq_field_textarea($field_id, $block_id, $text, $size = 'full') {
+		$editorsettings = array(
+			'wpautop' => true,
+			'media_buttons' => false,
+			
+		);
+		//$output = wp_editor($text, $field_id, $block_id, $editorsettings );
 		$output = '<textarea id="'. $block_id .'_'.$field_id.'" class="textarea-'.$size.'" name="aq_blocks['.$block_id.']['.$field_id.']" rows="5">'.$text.'</textarea>';
 		
 		return $output;
 	}
 	
+	/* Textarea field */
+	function aq_field_richtext($field_id, $block_id, $text, $size = 'full') {
+		$editorsettings = array(
+			'wpautop' => true,
+			'media_buttons' => false,
+			
+		);
+		//$output = wp_editor($text, $field_id, $block_id, $editorsettings );
+		
+		$output = '<div class="clear"></div><textarea id="'. $block_id .'_'.$field_id.'" class="textarea-'.$size.' tinymce" name="aq_blocks['.$block_id.']['.$field_id.']" rows="10">'.$text.'</textarea>';
+		
+		return $output;
+	}
 	
 	/* Select field */
 	function aq_field_select($field_id, $block_id, $options, $selected) {

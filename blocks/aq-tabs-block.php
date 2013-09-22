@@ -6,7 +6,7 @@ if(!class_exists('AQ_Tabs_Block')) {
 		function __construct() {
 			$block_options = array(
 				'name' => 'Tabs &amp; Toggles',
-				'size' => 'span6',
+				'size' => 'span3',
 			);
 			
 			//create the widget

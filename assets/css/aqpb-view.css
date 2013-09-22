@@ -62,12 +62,12 @@ copy this into your theme stylesheet
 /** Blocks 
 -----------------------*/
 .aq-block {  }
-
+img{max-width:100%;height:auto;}
 /* clear block */
 .aq-block-aq_clear_block { margin-bottom: 0px; }
-.aq-block-hr-single { margin-bottom: 20px; }
-.aq-block-hr-double { margin-bottom: 0px; }
-
+.aq-block-hr-single { margin-bottom: 20px; background:none!important; }
+.aq-block-hr-double {margin-top:20px; margin-bottom: 20px; background:none!important; }
+.clear{clear:both;}
 
 /* column block */
 

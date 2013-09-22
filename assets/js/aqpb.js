@@ -192,7 +192,7 @@ jQuery(document).ready(function($){
 	$('li.block').css('float', 'none');
 	
 	/** Open/close blocks **/
-	$(document).on('click', '#page-builder a.block-edit', function() {
+	/*$(document).on('click', '#page-builder a.block-edit', function() {
 		var blockID = $(this).parents('li').attr('id');
 		$('#' + blockID + ' .block-settings').slideToggle('fast');
 		
@@ -203,7 +203,9 @@ jQuery(document).ready(function($){
 		};
 		
 		return false;
-	});
+	});*/
+	
+	/** Blocks resizable **/
 	
 	/** Blocks resizable **/
 	$('ul.blocks li.block').each(function() {
@@ -235,6 +237,7 @@ jQuery(document).ready(function($){
 				block_archive = $(this).attr('id');
 			}
 		});
+		
 	});
 	
 	/** Blocks sorting (settings) **/
@@ -276,8 +279,11 @@ jQuery(document).ready(function($){
 		    //if column, remove handle bar
 		    if(ui.item.hasClass('block-aq_column_block')) {
 		    	ui.item.find('.block-bar').remove();
-		    	ui.item.find('.block-settings').removeClass('block-settings').addClass('block-settings-column');
+		    	ui.item.find('.block-settings').removeClass('block-settings modal hide fade').addClass('block-settings-column');
 		    }
+			
+			
+		
 		    
 		    //init resize on newly added block
 		    ui.item.resizable(resizable_args);
@@ -290,8 +296,13 @@ jQuery(document).ready(function($){
 		    ui.item.trigger("resizestop");
 		    
 		    //open on drop
-		    ui.item.find('a.block-edit').click();
-		    
+			ui.item.find('a.block-edit').click();
+			
+			
+		    ui.item.find('div-column').show();
+			/*if(ui.item.hasClass('editorgue')){
+				ui.item.find('.editorgue').addClass('ckeditors');
+			} */
 		    //disable resizable on .not-resizable blocks
 		    $(".ui-resizable.not-resizable").resizable("destroy");
 		    
@@ -306,7 +317,7 @@ jQuery(document).ready(function($){
 			columns_sortable();
 		}
 		
-		//@todo - resize column to maximum width of dropped item
+		//@todo - resize column to maximum width of dropped item | actually it's not neccasery
 		
 		//update order & parent ids
 		update_block_order();
@@ -341,6 +352,22 @@ jQuery(document).ready(function($){
 		
 		if($clicked.hasClass('delete')) {
 			$parent.find('> .block-bar .block-handle').css('background', 'red');
+			$parent.fadeOut(function() {
+				$(this).remove();
+				update_block_order();
+				update_block_number();
+			}).fadeOut('fast');
+		} 
+		return false;
+	});
+	
+	/** Delete Block (via "Delete" anchor) **/
+	$(document).on('click', '.block-controls a', function() {
+		$clicked = $(this);
+		$parent = $(this.parentNode.parentNode.parentNode.parentNode);
+		
+		if($clicked.hasClass('delete')) {
+			$parent.find('> .block-bar .block-handle').css('background', 'red');
 			$parent.slideUp(function() {
 				$(this).remove();
 				update_block_order();
@@ -352,6 +379,7 @@ jQuery(document).ready(function($){
 		return false;
 	});
 	
+	
 	/** Disable blocks archive if no template **/
 	$('#page-builder-column.metabox-holder-disabled').click( function() { return false })
 	$('#page-builder-column.metabox-holder-disabled #blocks-archive .block').draggable("destroy");
@@ -359,6 +387,12 @@ jQuery(document).ready(function($){
 	/** Confirm delete template **/
 	$('a.template-delete').click( function() { 
 		var agree = confirm('You are about to permanently delete this template. \'Cancel\' to stop, \'OK\' to delete.');
+		if(agree) { return } else { return false }
+	});
+	
+	/** Confirm delete MODULE **/
+	$('a.block-delete').click( function() { 
+		var agree = confirm('You are about to permanently delete this module. \'Cancel\' to stop, \'OK\' to delete.');
 		if(agree) { return } else { return false }
 	});
 	
@@ -391,6 +425,7 @@ jQuery(document).ready(function($){
 		
 	}
 	
+	
 	/** Sort nav order **/
 	$('.aqpb-tabs').sortable({
 		items: '.aqpb-tab-sortable',
@@ -408,6 +443,17 @@ jQuery(document).ready(function($){
 			return "The changes you made will be lost if you navigate away from this page.";
 		}
 	}); */
-
-// what fish?
+	
+//The Magic of Tinymce is here. 
+		jQuery(".modal").on("hidden",function(){
+			$(this).find('.tinymce').each(function(){
+				tinyMCE.execCommand( 'mceRemoveEditor', false, $(this).attr('id') );
+			});
+		});
+		jQuery(".modal").on("shown",function(){
+			$(this).find('.tinymce').each(function(){
+				tinyMCE.execCommand( 'mceAddEditor', false, $(this).attr('id') );
+			});
+		});
+// what fish? Tuna
 });

@@ -23,8 +23,20 @@ jQuery(document).ready(function($){
 	
 	aqpb_colorpicker();
 	
+	//tinymce.init({selector:'.tinymce'});
 	$('ul.blocks').bind('sortstop', function() {
 		aqpb_colorpicker();
+		//The Magic of Tinymce is here. 
+		jQuery(".modal").on("hidden",function(){
+			$(this).find('.tinymce').each(function(){
+				tinyMCE.execCommand( 'mceRemoveEditor', false, $(this).attr('id') );
+			});
+		});
+		jQuery(".modal").on("shown",function(){
+			$(this).find('.tinymce').each(function(){
+				tinyMCE.execCommand( 'mceAddEditor', false, $(this).attr('id') );
+			});
+		});
 	});
 	
 	/** Media Uploader

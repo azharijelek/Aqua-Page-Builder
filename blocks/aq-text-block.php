@@ -6,7 +6,7 @@ class AQ_Text_Block extends AQ_Block {
 	function __construct() {
 		$block_options = array(
 			'name' => 'Text',
-			'size' => 'span6',
+			'size' => 'span3',
 		);
 		
 		//create the block
@@ -30,9 +30,9 @@ class AQ_Text_Block extends AQ_Block {
 		</p>
 		
 		<p class="description">
-			<label for="<?php echo $this->get_field_id('text') ?>">
+			<label for="<?php echo $this->get_field_id('textareas') ?>">
 				Content
-				<?php echo aq_field_textarea('text', $block_id, $text, $size = 'full') ?>
+				<?php echo aq_field_textarea('textareas', $block_id, $textareas, $size = 'full') ?>
 			</label>
 		</p>
 		
@@ -43,7 +43,7 @@ class AQ_Text_Block extends AQ_Block {
 		extract($instance);
 		
 		if($title) echo '<h4 class="aq-block-title">'.strip_tags($title).'</h4>';
-		echo wpautop(do_shortcode(htmlspecialchars_decode($text)));
+		echo wpautop(do_shortcode(htmlspecialchars_decode($textareas)));
 	}
 	
 }

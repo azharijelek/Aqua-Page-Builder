@@ -7,7 +7,7 @@ class AQ_Column_Block extends AQ_Block {
 		
 		$block_options = array(
 			'name' => 'Column',
-			'size' => 'span6',
+			'size' => 'span3',
 		);
 		
 		//create the widget

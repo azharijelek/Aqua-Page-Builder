@@ -6,7 +6,7 @@ class AQ_Richtext_Block extends AQ_Block {
 	function __construct() {
 		$block_options = array(
 			'name' => 'Rich Text',
-			'size' => 'span6',
+			'size' => 'span3',
 		);
 		
 		//create the block
@@ -32,13 +32,19 @@ class AQ_Richtext_Block extends AQ_Block {
 		<p class="description">
 			<label for="<?php echo $this->get_field_id('text') ?>">
 				Content
-				<?php 
+				<?php /*
 				$args = array (
-//				    'tinymce' => false,
+				   // 'tinymce' => false,
 				    'quicktags' => true,
 				);
 				wp_editor( htmlspecialchars_decode($text), 'aq_blocks['.$block_id.'][text]', $args );
-				?>
+				*/?>
+				<div class="editor_media_buttons hide-if-no-js <?php echo $media_buttons_extra_class; ?>">
+					<?php do_action('media_buttons', $text); ?>
+				</div>
+				<div class="clear"></div>
+				<br/>
+				<?php echo aq_field_richtext('text', $block_id, $text, $size = 'full') ?>
 			</label>
 		</p>
 		

@@ -3,7 +3,7 @@
 
 Plugin Name: Aqua Page Builder
 Plugin URI: http://aquagraphite.com/page-builder
-Description: Easily create custom page templates with intuitive drag-and-drop interface. Requires PHP5 and WP3.5
+Description: This modified version did by Azhari Subroto. The original one is created by my bud syamil MJ.
 Version: 1.1.0
 Author: Syamil MJ
 Author URI: http://aquagraphite.com
@@ -42,7 +42,6 @@ require_once(AQPB_PATH . 'functions/aqpb_config.php');
 require_once(AQPB_PATH . 'functions/aqpb_blocks.php');
 require_once(AQPB_PATH . 'classes/class-aq-page-builder.php');
 require_once(AQPB_PATH . 'classes/class-aq-block.php');
-//require_once(AQPB_PATH . 'classes/class-aq-plugin-updater.php');
 require_once(AQPB_PATH . 'functions/aqpb_functions.php');
 
 //some default blocks
@@ -52,28 +51,23 @@ require_once(AQPB_PATH . 'blocks/aq-clear-block.php');
 require_once(AQPB_PATH . 'blocks/aq-widgets-block.php');
 require_once(AQPB_PATH . 'blocks/aq-alert-block.php');
 require_once(AQPB_PATH . 'blocks/aq-tabs-block.php');
-//require_once(AQPB_PATH . 'blocks/aq-richtext-block.php'); //buggy
+require_once(AQPB_PATH . 'blocks/aq-richtext-block.php'); 
+require_once(AQPB_PATH . 'blocks/aq-upload-block.php'); 
+require_once(AQPB_PATH . 'blocks/aq-upload-block.php'); 
 
 //register default blocks
 aq_register_block('AQ_Text_Block');
-//aq_register_block('AQ_Richtext_Block'); //buggy
+aq_register_block('AQ_Upload_Block');
 aq_register_block('AQ_Column_Block');
 aq_register_block('AQ_Clear_Block');
 aq_register_block('AQ_Widgets_Block');
+aq_register_block('AQ_Richtext_Block'); 
 aq_register_block('AQ_Alert_Block');
 aq_register_block('AQ_Tabs_Block');
+//aq_register_block('AQ_CKeditor_Block');
 
 //fire up page builder
 $aqpb_config = aq_page_builder_config();
 $aq_page_builder =& new AQ_Page_Builder($aqpb_config);
 if(!is_network_admin()) $aq_page_builder->init();
 
-/** @legacy
-//set up & fire up plugin updater
-$aqpb_updater_config = array(
-	'api_url'	=> 'http://aquagraphite.com/api/',
-	'slug'		=> 'aqua-page-builder',
-	'filename'	=> 'aq-page-builder.php'
-);
-$aqpb_updater = new AQ_Plugin_Updater($aqpb_updater_config);
-*/
